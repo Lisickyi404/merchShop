@@ -13,12 +13,14 @@ import {
   Route,
   Link,
 } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 /* LYWmT8EoOV2YykoJz30jTPnMZw9P0BSMFPxJq9CfcUo7GOV5bLU9XTsbVFA */
 
 function App() {
+  const data = useSelector(state=>state.basket.items)
   return (
 
-     <div className="App">
+     <div className="App" onClick={()=>console.log(data)}>
         <Header/> 
      
 

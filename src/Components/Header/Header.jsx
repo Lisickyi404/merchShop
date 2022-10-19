@@ -6,10 +6,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import {BiSearchAlt2} from 'react-icons/bi'
-import {AiOutlineUser} from 'react-icons/ai'
+import {AiOutlineUser,AiOutlineShoppingCart} from 'react-icons/ai'
 
 import Navbar from './HeaderMenu/Navbar'
-
+import Basket from '../Basket/Basket'
 
 
 
@@ -28,6 +28,8 @@ export default function Header(){
 
     const menuList = [ {title:'Наборы',path:'sets'}, allItems, {title:'Производство'},{title:'Информация'} ]
     const [menuLink,setMenuLink] = React.useState(0)
+
+    const [showBasket,setShowBasket] = React.useState(false)
 
     
 
@@ -51,7 +53,14 @@ export default function Header(){
             </span>
 
             <div className='user'>
-                <AiOutlineUser size={33}/>
+              {/*   <AiOutlineUser size={33}/> */}
+                <div className='basket'>
+                <AiOutlineShoppingCart size={33} color={'green'}
+                onClick={()=>setShowBasket(true)}
+                />
+                <p className='cout'>3</p>
+                </div>
+          
 
                 <ul className='setLang'>
                     <li>RU</li>
@@ -90,6 +99,10 @@ export default function Header(){
 
             </div>
             
+        {
+            showBasket ? <Basket setShowBasket={setShowBasket}/> : null
+        }
+
         </div>
     )
 }

@@ -11,9 +11,12 @@
 }
 
 
-.ItemModal{
-    max-width: 1400px;
 
+
+.ItemModal{
+    position: absolute;
+    max-width: 1400px;
+    margin: 0 auto;
     @media(max-width:1560px) {
         max-width: 1300px;        
     }
@@ -21,6 +24,17 @@
     @media(max-width:1440px) {
         max-width: 900px;        
     }
+
+   
+
+    @media(max-width:768px){
+        max-width: 728px;
+
+        display: flex;
+    }
+    
+
+
     position: relative;
     
     
@@ -70,6 +84,11 @@
                     }
                     @media(max-width:1024px) {
                         
+                    }
+
+                    @media(max-width:768px){
+                        width: 360px;
+                        height: 463px;
                     }
                 }
                 .ar{
@@ -166,6 +185,9 @@
             justify-content: space-around;
             position: relative;
             margin-top: 30px;
+            @media(max-width:768px){
+                flex-direction: column;
+            }
 
             .left{
                 position: relative;
@@ -290,6 +312,8 @@
 
     
 }
+
+
 
 .overlay {
     position:absolute;

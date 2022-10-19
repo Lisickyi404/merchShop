@@ -5,9 +5,12 @@ import {IoIosArrowBack,IoIosArrowForward} from 'react-icons/io'
 import {AiTwotoneStar} from 'react-icons/ai'
 import {BiBasket} from 'react-icons/bi'
 
+import { addItem,deleteItem} from '../../Redux/Basket'
+import { useSelector,useDispatch } from 'react-redux'
+
 import React from 'react'
 
-export default function Item({setModal}){
+export default function Item({setModal,itemInfo,item}){
 
     const PrevsImg = [img,img,img,img,img]
     const colors = ['#524983','#309F85','#309F85']
@@ -15,33 +18,34 @@ export default function Item({setModal}){
     const [like,setLike] = React.useState(false)
     const [buy,setBuy] = React.useState(false)
     const [imgIndx, setImgIndx] = React.useState(0)
+
+    const dispatch = useDispatch()
  
+    
     const likeItem = () => {
-     
+        console.log(item)
         setLike(!like)
     }
 
-    const buyItem = () =>{
+    const buyItem = (e) =>{
+        e.preventDefault()
+        e.stopPropagation()
+  
+       
+        if (!buy){
+            
+            dispatch(addItem(itemInfo))
+            console.log(itemInfo)
+       
+        } 
+        if(buy){
+            
+             dispatch(deleteItem(itemInfo)) 
+            console.log('удаление',itemInfo)
+            
+            
+        }
         setBuy(!buy)
-    }
-
-    const item = {
-        title:'EL003 Elleven Checkpoint-Friendly Compu-Backpack',
-        subTitle: 'EL003 Elleven Checkpoint-Friendly Compu-Backpack',
-        price : 76.28,
-        colors : ['#524983','#309F85','#309F85'],
-        PrevsImg : [img,img,img,img,img],
-        sizes:['XS','S','M','L','XXL'],
-        description:'This exclusive design has a designated laptop-only section that unfolds to lay flat on the X-ray belt to increase your speed, convenience and security. (Pens, Laptop and other devices shown are not included)',
-        properries:
-           [
-            {title:"Материал",value:"100% хлопок"},
-            {title:"Нанесение",value:"вышивка, термопечать"},
-            {title:"Нанесение",value:"вышивка, термопечать"},
-            {title:"Нанесение",value:"вышивка, термопечать"},
-           ]
-
-        
     }
 
     return(
@@ -56,7 +60,7 @@ export default function Item({setModal}){
 
                 />
 
-                <img src={item.PrevsImg[imgIndx]}/>
+                <img src={PrevsImg[imgIndx]}/>
                 <div className='navArs'>
                     <IoIosArrowBack
                     style={{cursor:'pointer'}}
@@ -65,7 +69,7 @@ export default function Item({setModal}){
                  
                     
                     />
-                    <p>{imgIndx+1}/{item.PrevsImg.length}</p>
+                    <p>{imgIndx+1}/{PrevsImg.length}</p>
                     <IoIosArrowForward
                     style={{cursor:'pointer'}}
                     size={35}
@@ -82,7 +86,7 @@ export default function Item({setModal}){
             <p className='item_subtitle'>
             {item.subTitle}
             </p>
-
+ 
             <ul className='colors'>
                 
                 {item.colors.map((el,i)=>
@@ -94,10 +98,11 @@ export default function Item({setModal}){
                 <div className='price'>
                     <p className='price_value'>From Price <br/>{item.price}$</p>
                 </div>
+
                 <BiBasket
                 size={45}
                 color={buy?'#1FAB8A':null}
-                onClick={()=>buyItem()}
+                onClick={(e)=>buyItem(e)}
                 style={{cursor:'pointer'}}
                 
                 /> 
