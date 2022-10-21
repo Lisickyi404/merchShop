@@ -10,28 +10,32 @@ import React from 'react'
 import {IoIosArrowDropleft,IoIosArrowDropright} from 'react-icons/io'
 import { BiPointer } from 'react-icons/bi'
 
+import { useSelector } from 'react-redux'
+
 export default function ItemsList(){
 
     const [modal,setModal] = React.useState(false)
     const [items,setItems] = React.useState([])
     const [itemsPage,setItemsPage] = React.useState(1)
     const [coutPages,setCoutPages] = React.useState(0)
+
+    const [needReload,setNeedReload] = React.useState(true)
     
+    let basket = useSelector(state=>state.basket.items)
     
     React.useEffect(()=>{
         axios.get(`https://634e8ddaf34e1ed8268f8bea.mockapi.io/items/`).then((res)=>
         {   
-           /*  for(let i=0;i<((res.data.length)/5);i++){
 
-            } */
             setCoutPages((res.data.length)/6)
             console.log(coutPages)
         })
     },[])
 
-/*     let arr = items.concat(res.data)
-                setItems(arr) */
-
+    React.useEffect(()=>{
+        console.log('setNeedReload(false)')
+        setNeedReload(false)
+    },[basket])
 
 
         React.useEffect(()=>
@@ -49,9 +53,9 @@ export default function ItemsList(){
         <div className="ItemsList">
             
             {
-                items.length>1 ?
+                items.length>1  && !needReload ?
                 items.map((el,i)=>
-                <Item key={i}
+                <Item key={el.id}
                 setModal={setModal}
                 itemInfo = {el}
                 item={el.item}
@@ -94,11 +98,13 @@ style={{ cursor: 'pointer'}}
 </div>
 </div>
 
-           {Object.keys(modal).length!=0 ?
+           {Object.keys(modal).length!=0  ?
 
            <ItemModal
            setModal={setModal}
            item={modal}
+           
+           images={[img,img,img,img,img]}
            
            />
            : null}

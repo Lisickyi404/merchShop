@@ -12,15 +12,23 @@ import React from 'react'
 
 export default function Item({setModal,itemInfo,item}){
 
+   
+
     const PrevsImg = [img,img,img,img,img]
     const colors = ['#524983','#309F85','#309F85']
+    let items = useSelector(state=>state.basket.items)
+    
 
     const [like,setLike] = React.useState(false)
-    const [buy,setBuy] = React.useState(false)
+    const [buy,setBuy] = React.useState(items.find(el=>el.id==itemInfo.id))
+
     const [imgIndx, setImgIndx] = React.useState(0)
 
     const dispatch = useDispatch()
- 
+       
+    React.useEffect(()=>{
+        setBuy(items.find(el=>el.id==itemInfo.id))
+    },[items])
     
     const likeItem = () => {
         console.log(item)

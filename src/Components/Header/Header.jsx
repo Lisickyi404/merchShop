@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 import {BiSearchAlt2} from 'react-icons/bi'
 import {AiOutlineUser,AiOutlineShoppingCart} from 'react-icons/ai'
+import { useSelector } from 'react-redux'
 
 import Navbar from './HeaderMenu/Navbar'
 import Basket from '../Basket/Basket'
@@ -16,6 +17,7 @@ import Basket from '../Basket/Basket'
 export default function Header(){
 
     const allItems ={title:'Все товары',path:'/sales',
+   
 
     categories:
         [
@@ -30,7 +32,7 @@ export default function Header(){
     const [menuLink,setMenuLink] = React.useState(0)
 
     const [showBasket,setShowBasket] = React.useState(false)
-
+    let items = useSelector(state=>state.basket.items)
     
 
     return(
@@ -55,12 +57,17 @@ export default function Header(){
             <div className='user'>
               {/*   <AiOutlineUser size={33}/> */}
                 <div className='basket'>
-                <AiOutlineShoppingCart size={33} color={'green'}
+             {items.length>0 ?
+              <>   
+              <AiOutlineShoppingCart size={33} color={'green'}
                 onClick={()=>setShowBasket(true)}
                 />
-                <p className='cout'>3</p>
-                </div>
-          
+                <p className='cout'>{items.length}</p>
+                
+                </> :null
+
+                }
+          </div>
 
                 <ul className='setLang'>
                     <li>RU</li>

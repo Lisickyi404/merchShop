@@ -1,11 +1,13 @@
 import React from "react"
 import './ItemModal.scss'
 
+import img from './img/ItemImg.png'
+
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 
 import {IoIosArrowDropleft,IoIosArrowDropright,IoIosArrowDown} from 'react-icons/io'
 
-export default function ItemModal({setModal,item}){
+export default function ItemModal({setModal,item,images}){
     
     const [imgNum,setImgNum] = React.useState(0)
     const [size,setSize] = React.useState(0)
@@ -20,26 +22,28 @@ export default function ItemModal({setModal,item}){
         {title:'3XL',eqwl:'81/76'},
     ]
 
+    
+
     return(
         <div className="ItemModal_wrapper">
             
             <div className="ItemModal">
 
-                <AiOutlineCloseCircle className="close" onClick={()=>setModal(false)}/>
+                <AiOutlineCloseCircle className="close" onClick={()=>{setModal(false)}}/>
                 
                 <div className="left">
                 <div className="gallery">
 
                   <div className="main_photo">
                   <IoIosArrowDropleft className="ar ar_left" onClick={()=>imgNum>0?setImgNum(imgNum-1):null}/>
-                  <img src={item.PrevsImg[imgNum]}/>
+                  <img src={images[imgNum]}/>
                    
-                    <IoIosArrowDropright className="ar ar_right" onClick={()=>imgNum<item.PrevsImg.length-1?setImgNum(imgNum+1):null}/>
+                    <IoIosArrowDropright className="ar ar_right" onClick={()=>imgNum<images.length-1?setImgNum(imgNum+1):null}/>
 
                   </div>
 
                     <ul className="img_list">
-                        {item.PrevsImg.map((el,i)=>
+                        {images.map((el,i)=>
                         <li>
                             <img
                             src={el}
