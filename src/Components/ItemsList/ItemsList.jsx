@@ -28,12 +28,12 @@ export default function ItemsList(){
         {   
 
             setCoutPages((res.data.length)/6)
-            console.log(coutPages)
+           
         })
     },[])
 
     React.useEffect(()=>{
-        console.log('setNeedReload(false)')
+    
         setNeedReload(false)
     },[basket])
 

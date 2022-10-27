@@ -164,9 +164,9 @@ export default function HomePage(){
                     <div className="send_message">
                         <p className="form_title">Введите свои контактные данные, и наш <br/> менеджер свяжется с Вами в течении 1 часа</p>
                     <form className="form" onSubmit={(e)=>sendCallForm(e)}>
-                            <input placeholder="Ваше Имя"/>
-                            <input placeholder="Ваша електронная почта"/>
-                            <input placeholder="Ваш номер телефона"/>
+                            <input placeholder="Ваше Имя" type='text'/>
+                            <input placeholder="Ваша електронная почта" type='email'/>
+                            <input placeholder="Ваш номер телефона" type='tel'/>
                             <button type="submit">Заказать</button>
 
                         </form>

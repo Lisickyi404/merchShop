@@ -26,13 +26,17 @@ export const BasketSlice = createSlice({
 
         plusItem:(state,action)=>{
             state.items[action.payload].cout++
-          console.log(action.payload)
+ 
         },
 
         minusItem:(state,action)=>{
             if (state.items[action.payload].cout>5 ){
                 state.items[action.payload].cout--
             }
+        },
+        
+        clearBasket:(state,action)=>{
+            state.items=[]
         }
 
         
@@ -41,5 +45,5 @@ export const BasketSlice = createSlice({
 })
 
 
-export const {addItem,deleteItem,plusItem,minusItem} = BasketSlice.actions
+export const {addItem,deleteItem,plusItem,minusItem,clearBasket} = BasketSlice.actions
 export default BasketSlice.reducer

@@ -1,0 +1,100 @@
+.Catalog{
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+    
+    .catalog_title{
+        h3{
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 58px;
+            color: #272525;
+        }
+
+        p{
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 130%;
+            /* or 23px */
+
+            letter-spacing: 0.065em;
+            text-transform: lowercase;
+
+            /* gray */
+
+            color: #454747;
+        }
+        
+    }
+    a{
+        text-decoration: none;
+    }
+    .product{
+        width: 310px;
+        display: flex;
+        flex-direction: column;
+        vertical-align: middle;
+        align-items: center;
+        margin-right: 35px;
+        margin-top: 15px;
+        cursor: pointer;
+       
+
+        h4{
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 105.5%;
+            /* or 25px */
+            text-decoration: none;
+            text-align: center;
+            
+            /* main black */
+            
+            color: #272525;
+        }
+
+        img{
+            width: 310px;
+            height: 250px;
+            border-radius: 15px;
+        }
+        
+    }
+    
+    .product_list{
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .info_list{
+        padding-top: 40px;
+        padding-bottom: 40px;
+        display: grid;
+
+        grid-template-columns:repeat(2,1fr);
+        list-style-type: none;
+        
+
+        .info_tab{
+          
+            margin-right: 75px;
+            margin-top: 120px;
+
+            .info_title{
+                font-weight: 600;
+                font-size: 36px;
+                line-height: 130%;
+                color: #272525;
+            }
+
+            .info_text{
+                margin-top: 20px;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 130%;
+                color: #454747;
+            }
+        }
+    }
+}

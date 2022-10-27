@@ -11,7 +11,7 @@ export default function ItemModal({setModal,item,images}){
     
     const [imgNum,setImgNum] = React.useState(0)
     const [size,setSize] = React.useState(0)
-    
+    const [color,setColor] = React.useState(0)
     const sizesTable =[
         {title:'XS',eqwl:'67/46'},
         {title:'S',eqwl:'69/51'},
@@ -22,7 +22,14 @@ export default function ItemModal({setModal,item,images}){
         {title:'3XL',eqwl:'81/76'},
     ]
 
-    
+    const addItemBasket = () =>{
+        let addingItem = {
+            size: item.sizes[size],
+            color:item.colors[color],
+        }
+        Object.assign(addingItem,item)
+        console.log(addingItem)
+    }
 
     return(
         <div className="ItemModal_wrapper">
@@ -68,7 +75,8 @@ export default function ItemModal({setModal,item,images}){
                      
                         <ul className="colors_list">
                             {item.colors.map((el,i)=>
-                            <li className='color' style={{backgroundColor:el}}>
+                            <li className="color"
+                            style={color==i?{backgroundColor:el,border:'4px solid pink'}:{backgroundColor:el}} onClick={()=>setColor(i)}>
                                 
                             </li>)}
                         </ul>
@@ -90,15 +98,15 @@ export default function ItemModal({setModal,item,images}){
                                 
                                 {item.sizes.map((el,i)=>
                                 <li
-                                onClick={()=>setSize(el)}
-                                className={el==size?'active':null}
+                                onClick={()=>setSize(i)}
+                                className={size==i?'active':null}
                                 >
                                     {el}
                                 </li>)}        
                             </ul>
 
-                        <button>
-                            Заказать
+                        <button onClick={()=>addItemBasket()}>
+                           Добавить
                         </button>
                         </div>
 

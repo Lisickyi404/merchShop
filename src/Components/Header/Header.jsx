@@ -28,8 +28,10 @@ export default function Header(){
     
 }
 
-    const menuList = [ {title:'Наборы',path:'sets'}, allItems, {title:'Производство'},{title:'Информация'} ]
+    const menuList = [ {title:'Наборы',path:'sets',categories:[]}, allItems, {title:'Пошив',path:'making',categories:[]},{title:'Информация',categories:[]} ]
     const [menuLink,setMenuLink] = React.useState(0)
+
+    const [subMenu,setSubMenu] = React.useState(false)
 
     const [showBasket,setShowBasket] = React.useState(false)
     let items = useSelector(state=>state.basket.items)
@@ -85,11 +87,21 @@ export default function Header(){
                 <ul className='menu_list'>
 
                     {menuList.map((el,i)=>
-                   <Link to={el.path}>
+                   <Link to={el.path}  >
                     <li className={menuLink==i?'menu_link_avtive':'menu_link'}
                     onClick={()=>setMenuLink(i)}
+                    onMouseEnter={()=>setSubMenu(i)}
+                    onMouseLeave={()=>setSubMenu(-1)}
                     
                     >
+                       {subMenu == i ?
+                        <div className='sub_menu'>
+                            <ul >
+                                {el.categories.map((el,i)=>
+                                <li>{el.title}</li>)}
+
+                            </ul>
+                        </div>:null}
                         {el.title}
                     </li>
                    </Link>)}

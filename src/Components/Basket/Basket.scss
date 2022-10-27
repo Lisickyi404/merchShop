@@ -17,11 +17,19 @@
     box-shadow: 0px 16.0566px 22px -8px rgba(82, 73, 131, 0.1), 0px 8.02828px 8.02828px -4.01414px rgba(26, 32, 44, 0.04);
     border-radius: 25px;
     z-index: 2;
-
+    position: relative;
     display: flex;
     justify-content: space-around;
     align-items: stretch;
     
+    .closeForm{
+        position: absolute;
+        top:0x;
+        right:0px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
 
     form{
         width: 280px;
@@ -160,6 +168,55 @@
             justify-content: space-between;
         }
     }
+
+    .null_basket{
+
+       
+            font-size: 36px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            vertical-align: middle;
+
+            button{
+                padding: 10px 20px 10px 20px;
+                font-size: 32px;
+                font-weight: 600;
+                border: 0;
+                border-radius: 30px;
+                background-color: pink;
+                cursor: pointer;
+            }
+        
+    }
+
+    .confirm_buttons{
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        vertical-align: middle;
+        .confirm_button{
+            padding: 10px 20px 10px 20px;
+            font-size: 32px;
+            font-weight: 600;
+            border-radius: 30px;
+            background-color: greenyellow;
+            border: 0;
+            color:white;
+
+        }
+        .cancel_button{
+            padding: 10px 20px 10px 20px;
+            font-size: 32px;
+            font-weight: 600;
+            border-radius: 30px;
+            background-color: red;
+            border: 0;
+            color:#FAFAFA;
+        }
+    }
+
+
 }
 
 .overlay {

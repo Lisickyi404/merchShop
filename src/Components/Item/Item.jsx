@@ -31,7 +31,7 @@ export default function Item({setModal,itemInfo,item}){
     },[items])
     
     const likeItem = () => {
-        console.log(item)
+        
         setLike(!like)
     }
 
@@ -43,13 +43,13 @@ export default function Item({setModal,itemInfo,item}){
         if (!buy){
             
             dispatch(addItem(itemInfo))
-            console.log(itemInfo)
+            
        
         } 
         if(buy){
             
              dispatch(deleteItem(itemInfo)) 
-            console.log('удаление',itemInfo)
+            
             
             
         }

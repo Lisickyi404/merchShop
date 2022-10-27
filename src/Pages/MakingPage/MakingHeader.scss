@@ -1,0 +1,78 @@
+.header_container{
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+}
+.making_header_wrapper{
+    
+    
+    width: 100vw;
+    height: fit-content;
+    background: linear-gradient(38.95deg, #9796F0 -10.38%, #FFE0E8 107.56%);
+}
+.MakingHeader{
+
+    max-width: 1440px;
+    height: fit-content;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    position: relative;
+    margin: 0 auto;
+
+
+
+    .header_left{
+
+        width: 582px;
+
+        .header_left_title{
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 60px;
+            color: #272525;
+        }
+
+        .header_left_description{
+            margin-top: 20px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 21px;
+            color: #454747;
+        }
+
+        .header_actions{
+            margin-top: 27px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            .send_call{
+                padding: 17px 49px 17px 49px;
+                background: #3C336C;
+                border-radius: 60px;
+                border: 0;
+                color: #FFFFFF;
+                font-weight: 500;
+                font-size: 17px;
+                line-height: 24px;
+                cursor: pointer;
+            }
+
+            .min_cout{
+                font-weight: 400;
+font-size: 16px;
+line-height: 130%;
+/* identical to box height, or 21px */
+
+
+color: #3C336C;
+            }
+        }
+    }
+
+    .header_right{
+        position: absolute;
+        right: 100px;
+        bottom: 0px;
+       
+    }
+}
